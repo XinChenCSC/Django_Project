@@ -20,9 +20,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #https://127.0.0.1:8000/page/2003/
     path('page/2003/',views.page_2003_view),
+    path('',views.index_view),
     #127.0.0.1:8000/n/op/m
     re_path(r'^(?P<x>\d{1,2})/(?P<op>\w+)/(?P<y>\d{1,2})',views.cal2_view),
     path('<int:n>/<str:op>/<int:m>',views.cal_view),
     path('test_request',views.test_request),
-]
 
+    
+]
