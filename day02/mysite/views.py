@@ -27,3 +27,12 @@ def test_request(request):
     print('querystring is',request.GET)
     # return HttpResponse('print test request')
     return HttpResponseRedirect('/page/2003/')
+def test_get_post(request):
+    if request.method == 'GET': 
+        print(request.GET['a'])
+        print(request.GET.get('c','no c'))
+    elif request.method == 'POST':
+        pass
+    else:
+        pass
+    return HttpResponse('--test get post is ok--')
