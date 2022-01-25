@@ -1,5 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
 
+POST_FORM = '''
+<form method = 'post' action = '/test_get_post'>
+    username: <input type = 'text' name = 'uname'>
+    <input type = 'submit' value = 'sumbit'>
+
+</form>
+'''
 def page_2003_view(request):
     html = "<h1>This is first page</h1>"
     return HttpResponse(html)
@@ -31,8 +38,11 @@ def test_get_post(request):
     if request.method == 'GET': 
         print(request.GET['a'])
         print(request.GET.get('c','no c'))
+        return HttpResponse(POST_FORM)
     elif request.method == 'POST':
-        pass
+        print('username:', request.POST['uname'])
+
+        return HttpResponse('Valid POST')
     else:
         pass
     return HttpResponse('--test get post is ok--')
