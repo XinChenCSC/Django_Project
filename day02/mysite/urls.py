@@ -25,7 +25,9 @@ urlpatterns = [
     re_path(r'^(?P<x>\d{1,2})/(?P<op>\w+)/(?P<y>\d{1,2})',views.cal2_view),
     path('<int:n>/<str:op>/<int:m>',views.cal_view),
     path('test_request',views.test_request),
-    path('test_get_post',views.test_get_post)
+    path('test_get_post',views.test_get_post),
+    path('test_html',views.test_html)
+    
 
     
 ]

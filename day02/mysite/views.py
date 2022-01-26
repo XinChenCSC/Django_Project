@@ -46,3 +46,8 @@ def test_get_post(request):
     else:
         pass
     return HttpResponse('--test get post is ok--')
+def test_html(request):
+    from django.template import loader
+    t = loader.get_template('test_html.html')
+    html = t.render()
+    return HttpResponse(html)
