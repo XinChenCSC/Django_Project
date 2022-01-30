@@ -1,0 +1,16 @@
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        {% for name in lst%}
+            {% if forloop.first %} &&&&& {%endif%}
+         <p>  {{forloop.counter}} {{name}}   </p>  
+            {% if forloop.last %} ****** {%endif%}
+            {%empty%}
+            no data
+        {% endfor %}
+     
+    </body>
+</html>

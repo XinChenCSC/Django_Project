@@ -26,8 +26,11 @@ urlpatterns = [
     path('<int:n>/<str:op>/<int:m>',views.cal_view),
     path('test_request',views.test_request),
     path('test_get_post',views.test_get_post),
-    path('test_html',views.test_html)
-    
+    path('test_html',views.test_html),
+    path('test_html_param',views.test_html_param),
+    path('mycal',views.test_mycal), 
+    path('test_for',views.test_for),
+
 
     
 ]

@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-
+from django.shortcuts import render
 POST_FORM = '''
 <form method = 'post' action = '/test_get_post'>
     username: <input type = 'text' name = 'uname'>
@@ -47,7 +47,53 @@ def test_get_post(request):
         pass
     return HttpResponse('--test get post is ok--')
 def test_html(request):
-    from django.template import loader
-    t = loader.get_template('test_html.html')
-    html = t.render()
-    return HttpResponse(html)
+    # from django.template import loader
+    # t = loader.get_template('test_html.html')
+    # html = t.render()
+    # return HttpResponse(html)
+    
+    dic = {'username':'dotdotdot','age':18}
+    return render(request,'test_html.html',dic)
+
+def test_html_param(request):
+    dic = {}
+    dic['int'] = 88
+    dic['str'] = 'dotdotdot'
+    dic['lst'] = ['dot','dotdot','dotdotdot']
+    dic['dict'] = {'a':9,'b':8}
+    dic['func'] = say_hi
+    dic['class'] = Dog()
+    dic['script'] = "<script>alert(1111)</script>"
+
+    return render(request,'test_html_param.html',dic)
+def say_hi():
+    return 'hi'
+class Dog:
+    def bark(self):
+        return 'bark bark'
+    
+def test_for(request):
+    dic = {}
+    dic['x'] = 20
+    dic['lst' ]  = ['dot','dotdot','dotdotdot']
+    return render(request, 'test_for.html',dic)
+
+def test_mycal(request):
+    if request.method == 'GET':
+        return render(request,'mycal.html')
+    elif request.method == 'POST':
+        x = int(request.POST['x'])
+        y = int(request.POST['y'])
+        op = request.POST['op'] 
+        res = 0
+        if op == 'add':
+            res = x + y
+        elif op == 'sub':
+            res = x - y
+        elif op == 'mul':
+            res = x * y
+        elif op == 'div':
+            res = x / y
+        return render(request,'mycal.html',locals())
+
+
